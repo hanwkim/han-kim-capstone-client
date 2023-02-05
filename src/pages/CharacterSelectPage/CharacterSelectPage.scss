@@ -1,0 +1,35 @@
+
+
+.character-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &__player-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 2rem;
+        margin-bottom: 5rem;
+    }
+
+    &__player {
+        width: 13rem;
+        height: 13rem;
+        border: 0.2rem solid black;
+        border-radius: 0.2rem;
+    }
+
+    &__character-grid {
+        display: flex;
+        flex-wrap: wrap;
+        width: 30rem;
+    }
+
+    &__character {
+        width: 6rem;
+        height: 6rem;
+        border: 0.2rem solid black;
+        border-radius: 0.2rem;
+    }
+}

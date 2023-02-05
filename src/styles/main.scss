@@ -1,0 +1,15 @@
+@use './partials/resets';
+@use './partials/font';
+
+body {
+    font-family: 'PixeloidSans';
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font-family: 'PixeloidSans';
+    border: none;
+}

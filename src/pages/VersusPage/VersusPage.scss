@@ -1,0 +1,46 @@
+@use '../../styles/partials/font';
+
+.versus {
+
+    &__title-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__title {
+        font-size: 5rem;
+        text-shadow: 0 0.5rem red;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__card {
+        height: 13rem;
+        width: 13rem;
+        border: 0.2rem solid black;
+        border-radius: 0.2rem;
+    }
+
+    &__text {
+        font-size: 4rem;
+    }
+
+    &__button-container {
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__button {
+        background-color: black;
+        color: white;
+        font-size: 2rem;
+        border-radius: 0.2rem;
+        padding: 0.5rem 2rem;
+        box-shadow: -0.2rem 0.2rem red;
+    }
+}
