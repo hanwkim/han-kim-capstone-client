@@ -23,6 +23,14 @@
         width: 13rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__p1-image,
+    &__p2-image {
+        width: 90%;
     }
 
     &__text {

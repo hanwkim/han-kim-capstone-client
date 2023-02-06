@@ -18,12 +18,25 @@
         height: 13rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__p1-image {
+        width: 95%;
+    }
+
+    &__p2-image {
+        width: 95%;
     }
 
     &__character-grid {
         display: flex;
         flex-wrap: wrap;
-        width: 30rem;
+        width: 80%;
+        max-width: 46rem;
+        justify-content: center;
     }
 
     &__character {
