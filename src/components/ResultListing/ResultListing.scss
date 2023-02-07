@@ -1,0 +1,18 @@
+
+.listing {
+    display: flex;
+    flex-direction: column;
+    margin: 0.3rem;
+
+    &__name {
+        font-weight: 700;
+    }
+
+    &__address {
+        font-size: 1.3rem;
+    }
+
+    &__rating {
+        font-size: 1.3rem;
+    }
+}

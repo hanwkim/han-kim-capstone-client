@@ -12,6 +12,13 @@
         width: 12rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__image {
+        width: 90%;
     }
 
     &__header-text {
@@ -22,7 +29,6 @@
     }
 
     &__listings-container {
-        height: 50rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
     }
@@ -33,7 +39,6 @@
 
     &__listings {
         margin: 0 1rem;
-        height: 30rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
     }
@@ -57,7 +62,6 @@
 
     &__details-container {
         margin-top: 2rem;
-        height: 20rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
     }
