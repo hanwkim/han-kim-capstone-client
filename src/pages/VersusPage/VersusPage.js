@@ -4,20 +4,24 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import "./VersusPage.scss";
 
 export default function VersusPage() {
+	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
 	const [playerOne, setPlayerOne] = useState(null);
 	const [playerTwo, setPlayerTwo] = useState(null);
 	const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-	const BASE_API_URL = "http://localhost:8080";
 
-	let playerOneQuery = searchParams.get("p1");
-	let playerTwoQuery = searchParams.get("p2");
+	const params = {
+		p1: searchParams.get("p1"),
+		p2: searchParams.get("p2")
+	};
+
+	const requestParams = new URLSearchParams(params).toString();
 
 	useEffect(() => {
 		try {
 			async function getPlayers() {
 				const { data } = await axios.get(
-					`${BASE_API_URL}/versus?p1=${playerOneQuery}&p2=${playerTwoQuery}`
+					`${BASE_API_URL}/versus?${requestParams}`
 				);
 				setPlayerOne(data[0]);
 				setPlayerTwo(data[1]);
@@ -26,15 +30,15 @@ export default function VersusPage() {
 		} catch (error) {
 			console.log(error);
 		}
-	}, [playerOneQuery, playerTwoQuery]);
+	}, [params]);
 
 	function clickHandler() {
 		const winningPlayer = Math.floor(Math.random() * 2);
 
         if (winningPlayer === 0) {
-            navigate(`/results?winner=${playerOneQuery}`)
+            navigate(`/results?winner=${params.p1}`)
         } else {
-            navigate(`/results?winner=${playerTwoQuery}`)
+            navigate(`/results?winner=${params.p2}`)
         }
 	};
 

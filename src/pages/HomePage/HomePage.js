@@ -1,6 +1,19 @@
 import "./HomePage.scss";
 
 export default function HomePage() {
+
+    const url = new URL('http://localhost:8080')
+    
+    const queries = {
+        test: "hello",
+        location: "here",
+        size: 100,
+    }
+
+    const requestParams = new URLSearchParams(queries).toString();
+
+    console.log(`${url}?${requestParams}`);
+
 	return (
         <main className="main">
             <div className="main__title-container">

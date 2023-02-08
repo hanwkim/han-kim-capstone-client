@@ -69,4 +69,14 @@
     &__details-title {
         padding: 0 1rem;
     }
+
+    &__map-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__map {
+        width: 70%;
+    }
 }

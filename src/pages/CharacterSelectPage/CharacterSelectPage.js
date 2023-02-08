@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function CharacterSelectPage() {
-	const BASE_API_URL = "http://localhost:8080";
+	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
 	const [characterList, setCharacterList] = useState(null);
 	const [playerOneHover, setPlayerOneHover] = useState(null);
 	const [playerTwoHover, setPlayerTwoHover] = useState(null);

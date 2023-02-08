@@ -6,20 +6,28 @@ import { useSearchParams } from "react-router-dom";
 import "./ResultsPage.scss";
 
 export default function ResultsPage() {
-	const BASE_API_URL = "http://localhost:8080";
+	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
 	const [listings, setListings] = useState(null);
 	const [winner, setWinner] = useState(null);
 	const [details, setDetails] = useState(null);
+	const [detailsMap, setDetailsMap] = useState(null);
 	const [searchParams] = useSearchParams();
 
 	let winnerQuery = searchParams.get("winner");
 
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition((position) => {
+			const params = {
+				winner: searchParams.get("winner"),
+				location: `${position.coords.latitude},${position.coords.longitude}`,
+			}
+
+			const requestParams = new URLSearchParams(params).toString();
+
 			try {
 				async function getResults() {
 					const { data } = await axios.get(
-						`${BASE_API_URL}/results?winner=${winnerQuery}&location=${position.coords.latitude},${position.coords.longitude}`
+						`${BASE_API_URL}/results?${requestParams}`
 					);
 					setListings(data[1].splice(0, 5));
 					setWinner(data[0]);
@@ -63,7 +71,9 @@ export default function ResultsPage() {
 									address={listing.formatted_address}
 									rating={listing.rating}
 									id={listing.place_id}
+									location={listing.geometry.location}
 									setDetails={setDetails}
+									setDetailsMap={setDetailsMap}
 								/>
 							);
 						})}
@@ -86,6 +96,10 @@ export default function ResultsPage() {
 							website={details.website}
 						/>
 					)}
+					<div className="results__map-container">
+						{detailsMap && 
+							<img src={detailsMap} className="results__map" alt="Map of location"></img>}
+					</div>
 				</section>
 			</section>
 		</section>
