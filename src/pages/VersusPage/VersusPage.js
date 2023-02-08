@@ -12,7 +12,7 @@ export default function VersusPage() {
 
 	const params = {
 		p1: searchParams.get("p1"),
-		p2: searchParams.get("p2")
+		p2: searchParams.get("p2"),
 	};
 
 	const requestParams = new URLSearchParams(params).toString();
@@ -36,9 +36,9 @@ export default function VersusPage() {
 		const winningPlayer = Math.floor(Math.random() * 2);
 
         if (winningPlayer === 0) {
-            navigate(`/results?winner=${params.p1}`)
+            navigate(`/results?winner=${params.p1}&city=${searchParams.get("city")}`)
         } else {
-            navigate(`/results?winner=${params.p2}`)
+            navigate(`/results?winner=${params.p2}&city=${searchParams.get("city")}`)
         }
 	};
 

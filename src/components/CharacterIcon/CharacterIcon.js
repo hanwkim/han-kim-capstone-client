@@ -31,11 +31,11 @@ export default function CharacterIcon({
 		if (!playerOneSelected) {
 			setPlayerOneSelected(name);
 		} else {
-			setPlayerTwoSelected(true);
-			setTimeout(
-				() => navigate(`/versus?p1=${playerOneSelected}&p2=${name}`),
-				2000
-			);
+			setPlayerTwoSelected(name);
+			// setTimeout(
+			// 	() => navigate(`/versus?p1=${playerOneSelected}&p2=${name}`),
+			// 	2000
+			// );
 		}
 	}
 

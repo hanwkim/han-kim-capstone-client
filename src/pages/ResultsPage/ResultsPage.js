@@ -13,13 +13,33 @@ export default function ResultsPage() {
 	const [detailsMap, setDetailsMap] = useState(null);
 	const [searchParams] = useSearchParams();
 
-	let winnerQuery = searchParams.get("winner");
-
 	useEffect(() => {
-		navigator.geolocation.getCurrentPosition((position) => {
+		if (searchParams.get("city") === "current") {
+			navigator.geolocation.getCurrentPosition((position) => {
+				const params = {
+					winner: searchParams.get("winner"),
+					location: `${position.coords.latitude},${position.coords.longitude}`,
+				};
+
+				const requestParams = new URLSearchParams(params).toString();
+
+				try {
+					async function getResults() {
+						const { data } = await axios.get(
+							`${BASE_API_URL}/results?${requestParams}`
+						);
+						setListings(data[1].splice(0, 5));
+						setWinner(data[0]);
+					}
+					getResults();
+				} catch (error) {
+					console.log(error);
+				}
+			});
+		} else {
 			const params = {
 				winner: searchParams.get("winner"),
-				location: `${position.coords.latitude},${position.coords.longitude}`,
+				city: searchParams.get("city"),
 			}
 
 			const requestParams = new URLSearchParams(params).toString();
@@ -35,9 +55,9 @@ export default function ResultsPage() {
 				getResults();
 			} catch (error) {
 				console.log(error);
-			}
-		});
-	}, [winnerQuery]);
+			}		
+		}
+	}, []);
 
 	return (
 		<section className="results">
@@ -97,8 +117,13 @@ export default function ResultsPage() {
 						/>
 					)}
 					<div className="results__map-container">
-						{detailsMap && 
-							<img src={detailsMap} className="results__map" alt="Map of location"></img>}
+						{detailsMap && (
+							<img
+								src={detailsMap}
+								className="results__map"
+								alt="Map of location"
+							></img>
+						)}
 					</div>
 				</section>
 			</section>

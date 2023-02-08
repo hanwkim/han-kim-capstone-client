@@ -1,5 +1,6 @@
 import "./CharacterSelectPage.scss";
 import CharacterIcon from "../../components/CharacterIcon/CharacterIcon";
+import StageSelect from "../../components/StageSelect/StageSelect";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -9,7 +10,7 @@ export default function CharacterSelectPage() {
 	const [playerOneHover, setPlayerOneHover] = useState(null);
 	const [playerTwoHover, setPlayerTwoHover] = useState(null);
 	const [playerOneSelected, setPlayerOneSelected] = useState(false);
-    const [playerTwoSelected, setPlayerTwoSelected] = useState(false);
+	const [playerTwoSelected, setPlayerTwoSelected] = useState(false);
 
 	useEffect(() => {
 		try {
@@ -26,7 +27,9 @@ export default function CharacterSelectPage() {
 	return (
 		<section className="character-select">
 			<div className="character-select__title-container">
-				<h1 className="character-select__title">Character Select</h1>
+				<h1 className="character-select__title">
+					{!playerTwoSelected ? "Character Select" : "Stage Select"}
+				</h1>
 			</div>
 
 			<section className="character-select__player-container">
@@ -51,23 +54,29 @@ export default function CharacterSelectPage() {
 			</section>
 
 			<section className="character-select__character-grid">
-				{characterList &&
+				{characterList && !playerTwoSelected ? (
 					characterList.map((character) => {
 						return (
 							<CharacterIcon
 								key={character.id}
 								imageUrl={character.image}
 								id={character.id}
-                                characterList={characterList}
+								characterList={characterList}
 								setPlayerOneHover={setPlayerOneHover}
-                                setPlayerTwoHover={setPlayerTwoHover}
-                                playerOneSelected={playerOneSelected}
-                                playerTwoSelected={playerTwoSelected}
-                                setPlayerOneSelected={setPlayerOneSelected}
-                                setPlayerTwoSelected={setPlayerTwoSelected}
+								setPlayerTwoHover={setPlayerTwoHover}
+								playerOneSelected={playerOneSelected}
+								playerTwoSelected={playerTwoSelected}
+								setPlayerOneSelected={setPlayerOneSelected}
+								setPlayerTwoSelected={setPlayerTwoSelected}
 							/>
 						);
-					})}
+					})
+				) : (
+					<StageSelect
+						playerOneSelected={playerOneSelected}
+						playerTwoSelected={playerTwoSelected}
+					/>
+				)}
 			</section>
 		</section>
 	);
