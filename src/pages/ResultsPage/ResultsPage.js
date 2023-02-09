@@ -11,6 +11,8 @@ export default function ResultsPage() {
 	const [winner, setWinner] = useState(null);
 	const [details, setDetails] = useState(null);
 	const [detailsMap, setDetailsMap] = useState(null);
+	const [priceFilter, setPriceFilter] = useState(0);
+	const [isOpenNow, setIsOpenNow] = useState(false);
 	const [searchParams] = useSearchParams();
 
 	useEffect(() => {
@@ -29,8 +31,7 @@ export default function ResultsPage() {
 						const { data } = await axios.get(
 							`${BASE_API_URL}/results?${requestParams}`
 						);
-						console.log(data[1].splice(0, 5));
-						setListings(data[1].splice(0, 5));
+						setListings(data[1]);
 						setWinner(data[0]);
 					}
 					getResults();
@@ -43,7 +44,7 @@ export default function ResultsPage() {
 				type: searchParams.get("type"),
 				winner: searchParams.get("winner"),
 				city: searchParams.get("city"),
-			}
+			};
 
 			const requestParams = new URLSearchParams(params).toString();
 
@@ -52,15 +53,71 @@ export default function ResultsPage() {
 					const { data } = await axios.get(
 						`${BASE_API_URL}/results?${requestParams}`
 					);
-					setListings(data[1].splice(0, 5));
+					setListings(data[1]);
 					setWinner(data[0]);
 				}
 				getResults();
 			} catch (error) {
 				console.log(error);
-			}		
+			}
 		}
 	}, []);
+
+	function filterButtonHandler() {
+		if (!priceFilter && !isOpenNow) {
+			alert("No filtering options selected!");
+			return;
+		}
+
+		if (searchParams.get("city") === "current") {
+			navigator.geolocation.getCurrentPosition((position) => {
+				const params = {
+					type: searchParams.get("type"),
+					winner: searchParams.get("winner"),
+					location: `${position.coords.latitude},${position.coords.longitude}`,
+					price: priceFilter,
+					openNow: isOpenNow,
+				};
+
+				const requestParams = new URLSearchParams(params).toString();
+
+				try {
+					async function getFilteredResults() {
+						const { data } = await axios.get(
+							`${BASE_API_URL}/results/filtered/current-location?${requestParams}`
+						);
+						setListings(data);
+					}
+					getFilteredResults();
+				} catch (error) {
+					console.log(error);
+				}
+			});
+		} else {
+			const params = {
+				type: searchParams.get("type"),
+				winner: searchParams.get("winner"),
+				city: searchParams.get("city"),
+				price: priceFilter,
+				openNow: isOpenNow,
+			};
+
+			const requestParams = new URLSearchParams(params).toString();
+
+			try {
+				async function getFilteredResults() {
+					const { data } = await axios.get(
+						`${BASE_API_URL}/results/filtered/city-location?${requestParams}`
+					);
+					setListings(data);
+				}
+				getFilteredResults();
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+	};
 
 	return (
 		<section className="results">
@@ -102,11 +159,65 @@ export default function ResultsPage() {
 						})}
 				</section>
 
-				<div className="results__filter-container">
-					<span className="results__filter-price">Price: $$$$</span>
-					<span className="results__filter-open">Open Now?</span>
-					<button className="results__filter-button">Apply</button>
-				</div>
+				<section className="results__filter-container">
+					<div className="results__filter-price">
+						Max Price:
+						<span
+							onClick={() => setPriceFilter(1)}
+							className={
+								priceFilter >= 1
+									? "results__dollar results__dollar--clicked"
+									: "results__dollar"
+							}
+						>
+							$
+						</span>
+						<span
+							onClick={() => setPriceFilter(2)}
+							className={
+								priceFilter >= 2
+									? "results__dollar results__dollar--clicked"
+									: "results__dollar"
+							}
+						>
+							$
+						</span>
+						<span
+							onClick={() => setPriceFilter(3)}
+							className={
+								priceFilter >= 3
+									? "results__dollar results__dollar--clicked"
+									: "results__dollar"
+							}
+						>
+							$
+						</span>
+						<span
+							onClick={() => setPriceFilter(4)}
+							className={
+								priceFilter == 4
+									? "results__dollar results__dollar--clicked"
+									: "results__dollar"
+							}
+						>
+							$
+						</span>
+					</div>
+					<div className="results__filter-open">
+						Open Now?
+						<span
+							onClick={() => setIsOpenNow(!isOpenNow)}
+							className={
+								isOpenNow
+									? "results__option results__option--clicked"
+									: "results__option"
+							}
+						>
+							Yes
+						</span>
+					</div>
+					<button onClick={filterButtonHandler} className="results__filter-button">Apply</button>
+				</section>
 			</section>
 
 			<section className="results__details-container">
@@ -115,15 +226,21 @@ export default function ResultsPage() {
 					{details && (
 						<PlaceDetails
 							name={details.name}
-							hours={details.opening_hours ? details.opening_hours.weekday_text : "No hours posted..."}
+							hours={
+								details.opening_hours
+									? details.opening_hours.weekday_text
+									: "No hours posted..."
+							}
 							website={details.website}
 						/>
 					)}
 					<div className="results__map-container">
 						{detailsMap && (
 							<iframe
-								className="results__map"	
-								src={detailsMap}></iframe>
+								className="results__map"
+								referrerPolicy="no-referrer-when-downgrade"
+								src={detailsMap}
+							></iframe>
 						)}
 					</div>
 				</section>

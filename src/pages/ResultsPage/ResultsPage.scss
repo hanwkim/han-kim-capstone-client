@@ -41,6 +41,8 @@
         margin: 0 1rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
+        height: 30rem;
+        overflow: auto;
     }
 
     &__filter-container {
@@ -53,6 +55,25 @@
     &__filter-open,
     &__filter-button {
         flex-grow: 1;
+    }
+
+    &__dollar {
+        color: grey;
+        padding: 0 0.1rem;
+        cursor: pointer;
+
+        &--clicked {
+            color: green;
+        }
+    }
+
+    &__option {
+        color: grey;
+        cursor: pointer;
+
+        &--clicked {
+            color: red;
+        }
     }
 
     &__filter-button {
