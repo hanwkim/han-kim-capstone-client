@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import "./CharacterIcon.scss";
 
 export default function CharacterIcon({
@@ -12,7 +11,6 @@ export default function CharacterIcon({
 	setPlayerOneSelected,
 	setPlayerTwoSelected,
 }) {
-	const navigate = useNavigate();
 
 	function playerHover(isP1Selected) {
 		const { image } = characterList.find(
@@ -26,16 +24,12 @@ export default function CharacterIcon({
 		}
 	}
 
-	function playerClick(event) {
+	function playerClick() {
 		const { name } = characterList.find((character) => character.id === id);
 		if (!playerOneSelected) {
 			setPlayerOneSelected(name);
 		} else {
 			setPlayerTwoSelected(name);
-			// setTimeout(
-			// 	() => navigate(`/versus?p1=${playerOneSelected}&p2=${name}`),
-			// 	2000
-			// );
 		}
 	}
 

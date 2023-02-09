@@ -1,10 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./StageSelect.scss";
 
 export default function StageSelect({ playerOneSelected, playerTwoSelected }) {
 	const navigate = useNavigate();
+	const [searchParams] = useSearchParams();
 
 	const params = {
+		type: searchParams.get("type"),
 		p1: playerOneSelected,
 		p2: playerTwoSelected,
 	};

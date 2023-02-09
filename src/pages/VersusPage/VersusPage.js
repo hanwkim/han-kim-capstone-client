@@ -11,6 +11,7 @@ export default function VersusPage() {
     const navigate = useNavigate();
 
 	const params = {
+		type: searchParams.get("type"),
 		p1: searchParams.get("p1"),
 		p2: searchParams.get("p2"),
 	};
@@ -36,9 +37,9 @@ export default function VersusPage() {
 		const winningPlayer = Math.floor(Math.random() * 2);
 
         if (winningPlayer === 0) {
-            navigate(`/results?winner=${params.p1}&city=${searchParams.get("city")}`)
+            navigate(`/results?type=${params.type}&winner=${params.p1}&city=${searchParams.get("city")}`)
         } else {
-            navigate(`/results?winner=${params.p2}&city=${searchParams.get("city")}`)
+            navigate(`/results?type=${params.type}&winner=${params.p2}&city=${searchParams.get("city")}`)
         }
 	};
 

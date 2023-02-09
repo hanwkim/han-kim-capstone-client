@@ -17,6 +17,7 @@ export default function ResultsPage() {
 		if (searchParams.get("city") === "current") {
 			navigator.geolocation.getCurrentPosition((position) => {
 				const params = {
+					type: searchParams.get("type"),
 					winner: searchParams.get("winner"),
 					location: `${position.coords.latitude},${position.coords.longitude}`,
 				};
@@ -28,6 +29,7 @@ export default function ResultsPage() {
 						const { data } = await axios.get(
 							`${BASE_API_URL}/results?${requestParams}`
 						);
+						console.log(data[1].splice(0, 5));
 						setListings(data[1].splice(0, 5));
 						setWinner(data[0]);
 					}
@@ -38,6 +40,7 @@ export default function ResultsPage() {
 			});
 		} else {
 			const params = {
+				type: searchParams.get("type"),
 				winner: searchParams.get("winner"),
 				city: searchParams.get("city"),
 			}
@@ -112,17 +115,15 @@ export default function ResultsPage() {
 					{details && (
 						<PlaceDetails
 							name={details.name}
-							hours={details.opening_hours.weekday_text}
+							hours={details.opening_hours ? details.opening_hours.weekday_text : "No hours posted..."}
 							website={details.website}
 						/>
 					)}
 					<div className="results__map-container">
 						{detailsMap && (
-							<img
-								src={detailsMap}
-								className="results__map"
-								alt="Map of location"
-							></img>
+							<iframe
+								className="results__map"	
+								src={detailsMap}></iframe>
 						)}
 					</div>
 				</section>

@@ -12,17 +12,17 @@ export default function ResultListing({
 }) {
 	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
 	const API_KEY = process.env.REACT_APP_API_KEY;
-	const BASE_MAP_API_URL = "https://maps.googleapis.com/maps/api/staticmap"
+	const BASE_MAP_API_URL = "https://www.google.com/maps/embed/v1/place";
 
 	const shortenedAddress = `${address.split(", ")[0]}, ${
 		address.split(", ")[1]
 	}`;
 
 	const params = {
-		zoom: 15,
 		key: API_KEY,
-		size: "400x400",
-		markers: `${location.lat},${location.lng}`,
+		q: `place_id:${id}`,
+		zoom: 15,
+		center: `${location.lat},${location.lng}`,
 	}
 
 	const mapRequestParams = new URLSearchParams(params).toString();
@@ -41,7 +41,6 @@ export default function ResultListing({
 		}
 
         setDetailsMap(`${BASE_MAP_API_URL}?${mapRequestParams}`);
-
 	}
 
 	return (

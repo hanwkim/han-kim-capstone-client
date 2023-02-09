@@ -3,6 +3,7 @@ import CharacterIcon from "../../components/CharacterIcon/CharacterIcon";
 import StageSelect from "../../components/StageSelect/StageSelect";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function CharacterSelectPage() {
 	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -11,11 +12,14 @@ export default function CharacterSelectPage() {
 	const [playerTwoHover, setPlayerTwoHover] = useState(null);
 	const [playerOneSelected, setPlayerOneSelected] = useState(false);
 	const [playerTwoSelected, setPlayerTwoSelected] = useState(false);
+	const [searchParams] = useSearchParams();
 
 	useEffect(() => {
+		const typeQuery = searchParams.get("type");
+
 		try {
 			async function getCharacters() {
-				const { data } = await axios.get(`${BASE_API_URL}/select`);
+				const { data } = await axios.get(`${BASE_API_URL}/select?type=${typeQuery}`);
 				setCharacterList(data);
 			}
 			getCharacters();

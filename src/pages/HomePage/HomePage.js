@@ -1,30 +1,39 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./HomePage.scss";
 
 export default function HomePage() {
-
-    const url = new URL('http://localhost:8080')
-    
-    const queries = {
-        test: "hello",
-        location: "here",
-        size: 100,
-    }
-
-    const requestParams = new URLSearchParams(queries).toString();
-
-    console.log(`${url}?${requestParams}`);
+	const [newGameClicked, setNewGameClicked] = useState(false);
 
 	return (
-        <main className="main">
-            <div className="main__title-container">
-                <span className="main__title">Food</span>
-                <span className="main__title">Fight</span>
-            </div>
-            <section className="main__links">
-                <span className="main__link">New Game</span>
-                <span className="main__link">Savory Showdown</span>
-                <span className="main__link">Sweet Showdown</span>
-            </section>
-        </main>
-        );
+		<main className="main">
+			<div className="main__title-container">
+				<h1 className="main__title">Food Fight</h1>
+			</div>
+			<section className="main__links">
+				<span
+					onClick={() => setNewGameClicked(true)}
+					className="main__link-new"
+				>
+					New Game
+				</span>
+				{newGameClicked && (
+					<>
+						<Link
+							to="/select?type=savory"
+							className="main__link-savory"
+						>
+							Savory Showdown
+						</Link>
+						<Link
+							to="/select?type=sweet"
+							className="main__link-sweet"
+						>
+							Sweet Showdown
+						</Link>
+					</>
+				)}
+			</section>
+		</main>
+	);
 }

@@ -1,0 +1,31 @@
+@use "../../styles/partials/font";
+
+.main {
+    text-align: center;
+
+    &__title {
+        font-family: 'StayPixel';
+        font-size: 8rem;
+        color: darkorange;
+        text-shadow: 0 0.7rem black;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__link-new {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        cursor: pointer;
+    }
+
+    &__link-savory,
+    &__link-sweet {
+        font-size: 2rem;
+        padding: 0.5rem 0;
+        color: black;
+        display: inline-block;
+    }
+}
