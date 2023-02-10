@@ -13,14 +13,14 @@ export default function CharacterIcon({
 }) {
 
 	function playerHover(isP1Selected) {
-		const { image } = characterList.find(
+		const { image, name } = characterList.find(
 			(character) => character.id === id
 		);
 
 		if (!isP1Selected) {
-			setPlayerOneHover(image);
+			setPlayerOneHover([image, name]);
 		} else {
-			setPlayerTwoHover(image);
+			setPlayerTwoHover([image, name]);
 		}
 	}
 

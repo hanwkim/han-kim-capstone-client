@@ -8,7 +8,7 @@ export default function VersusPage() {
 	const [playerOne, setPlayerOne] = useState(null);
 	const [playerTwo, setPlayerTwo] = useState(null);
 	const [searchParams] = useSearchParams();
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const params = {
 		type: searchParams.get("type"),
@@ -36,38 +36,52 @@ export default function VersusPage() {
 	function clickHandler() {
 		const winningPlayer = Math.floor(Math.random() * 2);
 
-        if (winningPlayer === 0) {
-            navigate(`/results?type=${params.type}&winner=${params.p1}&city=${searchParams.get("city")}`)
-        } else {
-            navigate(`/results?type=${params.type}&winner=${params.p2}&city=${searchParams.get("city")}`)
-        }
-	};
+		if (winningPlayer === 0) {
+			navigate(
+				`/results?type=${params.type}&winner=${
+					params.p1
+				}&city=${searchParams.get("city")}`
+			);
+		} else {
+			navigate(
+				`/results?type=${params.type}&winner=${
+					params.p2
+				}&city=${searchParams.get("city")}`
+			);
+		}
+	}
 
 	return (
 		<section className="versus">
 			<div className="versus__title-container">
-				<h1 className="versus__title">Showdown</h1>
+				<h2 className="versus__title">Showdown</h2>
 			</div>
 
 			<section className="versus__container">
-				<div className="versus__card">
-					{playerOne && (
-						<img
-							src={playerOne.image}
-							className="versus__p1-image"
-							alt="Player One Character"
-						></img>
-					)}
+				<div className="versus__card-container">
+					<div className="versus__card">
+						{playerOne && (
+							<img
+								src={playerOne.image}
+								className="versus__p1-image"
+								alt="Player One Character"
+							></img>
+						)}
+					</div>
+					<span className="versus__name">{playerOne && playerOne.name}</span>
 				</div>
 				<span className="versus__text">VS</span>
-				<div className="versus__card">
-					{playerTwo && (
-						<img
-							src={playerTwo.image}
-							className="versus__p2-image"
-							alt="Player Two Character"
-						></img>
-					)}
+				<div className="versus__card-container">
+					<div className="versus__card">
+						{playerTwo && (
+							<img
+								src={playerTwo.image}
+								className="versus__p2-image"
+								alt="Player Two Character"
+							></img>
+						)}
+					</div>
+					<span className="versus__name">{playerTwo && playerTwo.name}</span>
 				</div>
 			</section>
 

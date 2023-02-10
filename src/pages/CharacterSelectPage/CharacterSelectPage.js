@@ -19,7 +19,9 @@ export default function CharacterSelectPage() {
 
 		try {
 			async function getCharacters() {
-				const { data } = await axios.get(`${BASE_API_URL}/select?type=${typeQuery}`);
+				const { data } = await axios.get(
+					`${BASE_API_URL}/select?type=${typeQuery}`
+				);
 				setCharacterList(data);
 			}
 			getCharacters();
@@ -31,29 +33,39 @@ export default function CharacterSelectPage() {
 	return (
 		<section className="character-select">
 			<div className="character-select__title-container">
-				<h1 className="character-select__title">
+				<h2 className="character-select__title">
 					{!playerTwoSelected ? "Character Select" : "Stage Select"}
-				</h1>
+				</h2>
 			</div>
 
-			<section className="character-select__player-container">
-				<div className="character-select__player">
-					{playerOneHover && (
-						<img
-							src={playerOneHover}
-							className="character-select__p1-image"
-							alt="Player One Character"
-						></img>
-					)}
+			<section className="character-select__container">
+				<div className="character-select__player-container">
+					<div className="character-select__player">
+						{playerOneHover && (
+							<img
+								src={playerOneHover[0]}
+								className="character-select__p1-image"
+								alt="Player One Character"
+							></img>
+						)}
+					</div>
+					<span className="character-select__name">
+						{playerOneHover && playerOneHover[1]}
+					</span>
 				</div>
-				<div className="character-select__player">
-					{playerOneSelected && playerTwoHover ? (
-						<img
-							src={playerTwoHover}
-							className="character-select__p2-image"
-							alt="Player Two Character"
-						></img>
-					) : null}
+				<div className="character-select__player-container">
+					<div className="character-select__player">
+						{playerTwoHover && (
+							<img
+								src={playerTwoHover[0]}
+								className="character-select__p2-image"
+								alt="Player Two Character"
+							></img>
+						)}
+					</div>
+					<span className="character-select__name">
+						{playerTwoHover && playerTwoHover[1]}
+					</span>
 				</div>
 			</section>
 

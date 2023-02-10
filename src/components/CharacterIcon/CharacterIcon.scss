@@ -3,14 +3,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7rem;
-    height: 7rem;
-    border: 0.2rem solid black;
+    min-width: 7rem;
+    min-height: 7rem;
+    width: 12vw;
+    height: 12vw;
+    border: 0.2rem solid #FF865E;
     border-radius: 0.2rem;
     margin: -0.2rem -0.2rem 0 0;
+    background-color: #FEF9EF;
 
     &__image {
-        width: 6rem;
-        height: 6rem;
+        width: 85%;
     }
 }

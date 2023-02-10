@@ -1,0 +1,23 @@
+
+.review {
+    padding: 1rem;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__name {
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+
+    &__rating {
+        font-size: 1.4rem;
+    }
+
+    &__text {
+        font-size: 1.5rem;
+    }
+}

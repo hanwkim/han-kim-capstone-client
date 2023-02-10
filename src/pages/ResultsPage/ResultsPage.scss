@@ -5,16 +5,20 @@
 
     &__header {
         display: flex;
+        padding: 3rem 0 4rem 0;
     }
 
     &__winner {
-        height: 12rem;
-        width: 12rem;
+        min-height: 12rem;
+        min-width: 12rem;
+        width: 25vw;
+        height: 25vw;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: 0.2rem 0.2rem #FEE440;
     }
 
     &__image {
@@ -24,8 +28,22 @@
     &__header-text {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         flex-grow: 1;
+    }
+
+    &__header-title {
+        margin: 0;
+        padding-bottom: 2rem;
+        font-size: 2.8rem;
+        text-shadow: 0 0.4rem #FEF9EF;
+    }
+
+    &__header-subtitle {
+        margin: 0;
+        font-size: 2.2rem;
+        text-shadow: 0 0.2rem #FF865E;
     }
 
     &__listings-container {
@@ -41,7 +59,7 @@
         margin: 0 1rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
-        height: 30rem;
+        max-height: 50vh;
         overflow: auto;
     }
 
@@ -81,25 +99,16 @@
         color: white;
     }
 
-    &__details-container {
-        margin-top: 2rem;
-        border: 0.2rem solid black;
-        border-radius: 0.2rem;
-    }
-
-    &__details-title {
-        padding: 0 1rem;
-    }
-
-    &__map-container {
+    &__button-container {
         display: flex;
         justify-content: center;
-        align-items: center;
+        margin-top: 2rem;
     }
 
-    &__map {
-        width: 22rem;
-        height: 22rem;
-        border: none;
+    &__reset-button {
+        background-color: black;
+        color: white;
+        padding: 0.8rem 3rem;
+        font-size: 2rem;
     }
 }

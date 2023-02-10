@@ -1,19 +1,17 @@
 import axios from "axios";
-import PlaceDetails from "../../components/PlaceDetails/PlaceDetails";
 import ResultListing from "../../components/ResultListing/ResultListing";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./ResultsPage.scss";
 
 export default function ResultsPage() {
 	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
 	const [listings, setListings] = useState(null);
 	const [winner, setWinner] = useState(null);
-	const [details, setDetails] = useState(null);
-	const [detailsMap, setDetailsMap] = useState(null);
 	const [priceFilter, setPriceFilter] = useState(0);
 	const [isOpenNow, setIsOpenNow] = useState(false);
 	const [searchParams] = useSearchParams();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (searchParams.get("city") === "current") {
@@ -72,7 +70,6 @@ export default function ResultsPage() {
 		if (searchParams.get("city") === "current") {
 			navigator.geolocation.getCurrentPosition((position) => {
 				const params = {
-					type: searchParams.get("type"),
 					winner: searchParams.get("winner"),
 					location: `${position.coords.latitude},${position.coords.longitude}`,
 					price: priceFilter,
@@ -95,7 +92,6 @@ export default function ResultsPage() {
 			});
 		} else {
 			const params = {
-				type: searchParams.get("type"),
 				winner: searchParams.get("winner"),
 				city: searchParams.get("city"),
 				price: priceFilter,
@@ -116,8 +112,7 @@ export default function ResultsPage() {
 				console.log(error);
 			}
 		}
-
-	};
+	}
 
 	return (
 		<section className="results">
@@ -152,8 +147,6 @@ export default function ResultsPage() {
 									rating={listing.rating}
 									id={listing.place_id}
 									location={listing.geometry.location}
-									setDetails={setDetails}
-									setDetailsMap={setDetailsMap}
 								/>
 							);
 						})}
@@ -195,7 +188,7 @@ export default function ResultsPage() {
 						<span
 							onClick={() => setPriceFilter(4)}
 							className={
-								priceFilter == 4
+								priceFilter === 4
 									? "results__dollar results__dollar--clicked"
 									: "results__dollar"
 							}
@@ -216,35 +209,19 @@ export default function ResultsPage() {
 							Yes
 						</span>
 					</div>
-					<button onClick={filterButtonHandler} className="results__filter-button">Apply</button>
+					<button
+						onClick={filterButtonHandler}
+						className="results__filter-button"
+					>
+						Apply
+					</button>
 				</section>
 			</section>
-
-			<section className="results__details-container">
-				<h2 className="results__details-title">Details</h2>
-				<section className="results__details">
-					{details && (
-						<PlaceDetails
-							name={details.name}
-							hours={
-								details.opening_hours
-									? details.opening_hours.weekday_text
-									: "No hours posted..."
-							}
-							website={details.website}
-						/>
-					)}
-					<div className="results__map-container">
-						{detailsMap && (
-							<iframe
-								className="results__map"
-								referrerPolicy="no-referrer-when-downgrade"
-								src={detailsMap}
-							></iframe>
-						)}
-					</div>
-				</section>
-			</section>
+			<div className="results__button-container">
+				<button onClick={() => navigate("/")} className="results__reset-button">
+					Another Showdown?
+				</button>
+			</div>
 		</section>
 	);
 }

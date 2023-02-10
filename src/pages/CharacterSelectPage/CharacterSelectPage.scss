@@ -1,48 +1,62 @@
-
+@use "../../styles/partials/mixin";
 
 .character-select {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &__title {
+        font-size: 2.7rem;
+        text-shadow: 0 0.3rem #FEE440;
+        margin: 3rem 0 4rem 0;
+    }
     
-    &__player-container {
+    &__container {
         display: flex;
         justify-content: space-between;
         width: 100%;
+        max-width: 66rem;
         padding: 0 2rem;
         margin-bottom: 5rem;
     }
 
+    &__player-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     &__player {
-        width: 13rem;
-        height: 13rem;
+        min-width: 12rem;
+        min-height: 12rem;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 33vw;
+        height: 33vw;
     }
 
     &__p1-image {
-        width: 95%;
+        width: 90%;
     }
 
     &__p2-image {
-        width: 95%;
+        width: 90%;
+    }
+
+    &__name {
+        font-size: 1.6rem;
+        height: 1.6rem;
+        margin: 1rem 0 2rem 0;
     }
 
     &__character-grid {
         display: flex;
         flex-wrap: wrap;
         width: 80%;
-        max-width: 46rem;
+        max-width: 71vw;
         justify-content: center;
-    }
-
-    &__character {
-        width: 6rem;
-        height: 6rem;
-        border: 0.2rem solid black;
-        border-radius: 0.2rem;
     }
 }

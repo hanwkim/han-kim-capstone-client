@@ -4,15 +4,16 @@
     text-align: center;
 
     &__title {
-        font-family: 'StayPixel';
+        font-family: 'Fibberish';
         font-size: 8rem;
-        color: darkorange;
-        text-shadow: 0 0.7rem black;
+        color: #FF865E;
+        text-shadow: 0 0.7rem rgba(0, 0, 0, 0.91);
     }
 
     &__links {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     &__link-new {
@@ -21,11 +22,26 @@
         cursor: pointer;
     }
 
+    &__link-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        right: 1.6rem;
+    }
+
     &__link-savory,
     &__link-sweet {
-        font-size: 2rem;
+        font-size: 2.2rem;
         padding: 0.5rem 0;
         color: black;
         display: inline-block;
+    }
+
+    &__link-icon {
+        visibility: hidden;
+
+        &--hovered {
+            visibility: visible;
+        }
     }
 }
