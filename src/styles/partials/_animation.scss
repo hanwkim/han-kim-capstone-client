@@ -1,0 +1,274 @@
+@keyframes titleAnimation {
+    0% {
+        color: #FF865E;
+    }
+
+    25% {
+        color: #FEF9EF;
+    }
+
+    50% {
+        color: #FEE440;
+    }
+
+    75% {
+        color: #FF865E;
+    }
+}
+
+@keyframes newGameBlink {
+    0% {
+        color: black;
+    }
+
+    50% {
+        color: transparent;
+    }
+}
+
+@keyframes gameTypeSelected {
+    0% {
+        color: black;
+    }
+
+    50% {
+        color: transparent;
+    }
+}
+
+@keyframes playerOneHover {
+    0% {
+        box-shadow: inset 0 0 0.2rem 0.2rem #FF597B;
+    }
+
+    50% {
+        box-shadow: inset 0 0 0.2rem 0.2rem transparent;
+    }
+}
+
+@keyframes playerTwoHover {
+    0% {
+        box-shadow: inset 0 0 0.2rem 0.2rem #1746A2;
+    }
+
+    50% {
+        box-shadow: inset 0 0 0.2rem 0.2rem transparent;
+    }
+}
+
+@keyframes playerOneModal {
+    0% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #FF597B;
+    }
+
+    10% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    20% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #FF597B;
+    }
+
+    30% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    40%{
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #FF597B;
+    }
+
+    50% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    60% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #FF597B;
+    }
+
+    70% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    80% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #FF597B;
+    }
+
+    90% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #FF597B;
+    }
+}
+
+@keyframes playerTwoModal {
+    0% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #1746A2;
+    }
+
+    10% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    20% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #1746A2;
+    }
+
+    30% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    40%{
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #1746A2;
+    }
+
+    50% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    60% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #1746A2;
+    }
+
+    70% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    80% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #1746A2;
+    }
+
+    90% {
+        background-color: transparent;
+        color: transparent;
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #1746A2;
+    }
+}
+
+@keyframes buttonHover {
+    0% {
+        color: #FFF;
+        border-color: #FFF;
+    }
+
+    25% {
+        color: #FF8B13;
+        border-color: #FF8B13;
+    }
+
+    50% {
+        color: #ECECEC;
+        border-color: #ECECEC;
+    }
+
+    75% {
+        color: #F273E6;
+        border-color: #F273E6;
+    }
+
+    100% {
+        border-color: #FFF;
+    }
+}
+
+@keyframes fightButtonHover {
+    0% {
+        color: #FFF;
+        border-color: #FFF;
+    }
+
+    33% {
+        color: #FF597B;
+        border-color: #FF597B;
+    }
+
+    66% {
+        color: #1746A2;
+        border-color: #1746A2;
+    }
+
+    100% {
+        border-color: #FFF;
+    }
+}
+
+@keyframes selectTitleAnimation {
+    0% {
+        text-shadow: 0 0.3rem #FEE440;
+    }
+
+    50% {
+        text-shadow: 0 0.3rem #FF865E;
+    }
+}
+
+@keyframes versusTitleAnimation {
+    0% {
+        text-shadow: 0 0.4rem #FF865E;
+    }
+
+    50% {
+        text-shadow: 0 0.4rem #FEF9EF;
+    }
+}
+
+@keyframes resultsTitleAnimation {
+    0% {
+        text-shadow: 0 0.4rem #FEF9EF;
+    }
+
+    25% {
+        text-shadow: 0 0.4rem #FF865E;
+    }
+
+    50% {
+        text-shadow: 0 0.4rem #FEE440;
+    }
+
+    75% {
+        text-shadow: 0 0.4rem #FF597B;
+    }
+}
+
+@keyframes detailsTitleAnimation {
+    0% {
+        text-shadow: 0 0.2rem #FEF9EF;
+    }
+
+    25% {
+        text-shadow: 0 0.2rem #FF865E;
+    }
+
+    50% {
+        text-shadow: 0 0.2rem #FEE440;
+    }
+
+    75% {
+        text-shadow: 0 0.2rem #FF597B;
+    }
+}

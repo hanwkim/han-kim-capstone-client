@@ -18,8 +18,8 @@ export default function PlaceDetails({ name, hours, summary, reviews, price }) {
 					? "$$$"
 					: "$$$$"}
 			</span>
+			<span className="details__hours-title">Hours:</span>
 			<ul className="details__hours">
-				Hours:
 				{typeof hours !== "string"
 					? hours.map((hour) => {
 							return (

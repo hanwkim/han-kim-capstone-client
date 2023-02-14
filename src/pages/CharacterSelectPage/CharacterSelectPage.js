@@ -12,6 +12,7 @@ export default function CharacterSelectPage() {
 	const [playerTwoHover, setPlayerTwoHover] = useState(null);
 	const [playerOneSelected, setPlayerOneSelected] = useState(false);
 	const [playerTwoSelected, setPlayerTwoSelected] = useState(false);
+	const [showStageSelect, setShowStageSelect] = useState(false);
 	const [searchParams] = useSearchParams();
 
 	useEffect(() => {
@@ -34,19 +35,23 @@ export default function CharacterSelectPage() {
 		<section className="character-select">
 			<div className="character-select__title-container">
 				<h2 className="character-select__title">
-					{!playerTwoSelected ? "Character Select" : "Stage Select"}
+					{!showStageSelect ? "Character Select" : "Stage Select"}
 				</h2>
 			</div>
 
 			<section className="character-select__container">
 				<div className="character-select__player-container">
 					<div className="character-select__player">
-						{playerOneHover && (
+						{playerOneHover ? (
 							<img
 								src={playerOneHover[0]}
 								className="character-select__p1-image"
 								alt="Player One Character"
 							></img>
+						) : (
+							<span className="character-select__p1-placeholder">
+								1P
+							</span>
 						)}
 					</div>
 					<span className="character-select__name">
@@ -55,12 +60,16 @@ export default function CharacterSelectPage() {
 				</div>
 				<div className="character-select__player-container">
 					<div className="character-select__player">
-						{playerTwoHover && (
+						{playerTwoHover ? (
 							<img
 								src={playerTwoHover[0]}
 								className="character-select__p2-image"
 								alt="Player Two Character"
 							></img>
+						) : (
+							<span className="character-select__p2-placeholder">
+								2P
+							</span>
 						)}
 					</div>
 					<span className="character-select__name">
@@ -70,7 +79,7 @@ export default function CharacterSelectPage() {
 			</section>
 
 			<section className="character-select__character-grid">
-				{characterList && !playerTwoSelected ? (
+				{characterList && !showStageSelect ? (
 					characterList.map((character) => {
 						return (
 							<CharacterIcon
@@ -84,6 +93,7 @@ export default function CharacterSelectPage() {
 								playerTwoSelected={playerTwoSelected}
 								setPlayerOneSelected={setPlayerOneSelected}
 								setPlayerTwoSelected={setPlayerTwoSelected}
+								setShowStageSelect={setShowStageSelect}
 							/>
 						);
 					})

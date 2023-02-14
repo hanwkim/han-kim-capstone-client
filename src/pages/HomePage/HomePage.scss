@@ -1,25 +1,33 @@
 @use "../../styles/partials/font";
+@use "../../styles/partials/animation";
 
 .main {
     text-align: center;
 
     &__title {
-        font-family: 'Fibberish';
+        font-family: 'PixeloidMono';
         font-size: 8rem;
         color: #FF865E;
         text-shadow: 0 0.7rem rgba(0, 0, 0, 0.91);
+        animation: titleAnimation linear 1s infinite;
     }
 
     &__links {
         display: flex;
         flex-direction: column;
         align-items: center;
+
     }
 
     &__link-new {
         font-size: 3rem;
         margin-bottom: 1rem;
+        font-weight: 700;
         cursor: pointer;
+        
+        &--blink {
+            animation: newGameBlink steps(1, end) 0.75s infinite;
+        }
     }
 
     &__link-container {
@@ -35,6 +43,11 @@
         padding: 0.5rem 0;
         color: black;
         display: inline-block;
+        cursor: pointer;
+
+        &--selected {
+            animation: gameTypeSelected steps(1, end) 0.1s infinite;
+        }
     }
 
     &__link-icon {

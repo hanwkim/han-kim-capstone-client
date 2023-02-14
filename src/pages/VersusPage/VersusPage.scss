@@ -1,4 +1,5 @@
 @use '../../styles/partials/font';
+@use '../../styles/partials/animation';
 
 .versus {
     display: flex;
@@ -14,6 +15,7 @@
         font-size: 4.5rem;
         text-shadow: 0 0.4rem #FF865E;
         margin: 3rem 0 4rem 0;
+        animation: versusTitleAnimation linear 2s infinite;
     }
 
     &__container {
@@ -70,7 +72,11 @@
         color: white;
         font-size: 2rem;
         border-radius: 0.2rem;
+        border: 0.2rem solid transparent;
         padding: 0.5rem 2rem;
-        box-shadow: -0.2rem 0.2rem red;
+
+        &:hover {
+            animation: fightButtonHover 0.4s linear infinite;
+        }
     }
 }
