@@ -17,7 +17,7 @@
     background-color: #FEE440;
     z-index: 5;
     width: 90%;
-    height: 100vh;
+    max-height: 150%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -47,6 +47,7 @@
     &__button-container {
         display: flex;
         justify-content: center;
+        padding-bottom: 2rem;
     }
 
     &__button {

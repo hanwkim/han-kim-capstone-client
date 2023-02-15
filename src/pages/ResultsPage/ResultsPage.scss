@@ -45,6 +45,7 @@
         font-size: 2.2rem;
         text-shadow: 0 0.2rem #FEF9EF;
         animation: resultsTitleAnimation linear 1s infinite;
+        text-align: center;
     }
 
     &__listings-container {
@@ -83,7 +84,7 @@
         cursor: pointer;
 
         &--clicked {
-            color: #FF865E;
+            color: #FEE440;
         }
     }
 
@@ -93,7 +94,7 @@
         padding-left: 0.2rem;
 
         &--clicked {
-            color: #FF865E;
+            color: #FEE440;
         }
     }
 

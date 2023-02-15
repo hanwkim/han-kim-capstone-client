@@ -1,4 +1,5 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./VersusPage.scss";
@@ -54,12 +55,18 @@ export default function VersusPage() {
 	return (
 		<section className="versus">
 			<div className="versus__title-container">
-				<h2 className="versus__title">Showdown</h2>
+				<motion.h2
+					className="versus__title"
+					initial={{ y: -200 }}
+					animate={{ y: 0 }}
+				>
+					Showdown
+				</motion.h2>
 			</div>
 
 			<section className="versus__container">
 				<div className="versus__card-container">
-					<div className="versus__card">
+					<div className="versus__card" initial={{ x: -300 }} animate={{ x: 0 }}>
 						{playerOne && (
 							<img
 								src={playerOne.image}
@@ -68,9 +75,11 @@ export default function VersusPage() {
 							></img>
 						)}
 					</div>
-					<span className="versus__name">{playerOne && playerOne.name}</span>
+					<span className="versus__name" inital={{ x: -300 }} animate={{ x: 0 }}>
+						{playerOne && playerOne.name}
+					</span>
 				</div>
-				<span className="versus__text">VS</span>
+				<motion.span className="versus__text" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>VS</motion.span>
 				<div className="versus__card-container">
 					<div className="versus__card">
 						{playerTwo && (
@@ -81,15 +90,17 @@ export default function VersusPage() {
 							></img>
 						)}
 					</div>
-					<span className="versus__name">{playerTwo && playerTwo.name}</span>
+					<span className="versus__name">
+						{playerTwo && playerTwo.name}
+					</span>
 				</div>
 			</section>
 
-			<div className="versus__button-container">
+			<motion.div className="versus__button-container" initial={{ y: 300 }} animate={{ y: 0 }}>
 				<button className="versus__button" onClick={clickHandler}>
 					Fight
 				</button>
-			</div>
+			</motion.div>
 		</section>
 	);
 }

@@ -4,6 +4,7 @@ import StageSelect from "../../components/StageSelect/StageSelect";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function CharacterSelectPage() {
 	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -34,14 +35,22 @@ export default function CharacterSelectPage() {
 	return (
 		<section className="character-select">
 			<div className="character-select__title-container">
-				<h2 className="character-select__title">
+				<motion.h2
+					className="character-select__title"
+					initial={{ y: -200 }}
+					animate={{ y: 0 }}
+				>
 					{!showStageSelect ? "Character Select" : "Stage Select"}
-				</h2>
+				</motion.h2>
 			</div>
 
 			<section className="character-select__container">
 				<div className="character-select__player-container">
-					<div className="character-select__player">
+					<motion.div
+						className="character-select__player"
+						initial={{ x: -300 }}
+						animate={{ x: 0 }}
+					>
 						{playerOneHover ? (
 							<img
 								src={playerOneHover[0]}
@@ -53,13 +62,17 @@ export default function CharacterSelectPage() {
 								1P
 							</span>
 						)}
-					</div>
+					</motion.div>
 					<span className="character-select__name">
 						{playerOneHover && playerOneHover[1]}
 					</span>
 				</div>
 				<div className="character-select__player-container">
-					<div className="character-select__player">
+					<motion.div
+						className="character-select__player"
+						initial={{ x: 300 }}
+						animate={{ x: 0 }}
+					>
 						{playerTwoHover ? (
 							<img
 								src={playerTwoHover[0]}
@@ -71,14 +84,17 @@ export default function CharacterSelectPage() {
 								2P
 							</span>
 						)}
-					</div>
+					</motion.div>
 					<span className="character-select__name">
 						{playerTwoHover && playerTwoHover[1]}
 					</span>
 				</div>
 			</section>
-
-			<section className="character-select__character-grid">
+			<motion.section
+				className="character-select__character-grid"
+				initial={{ y: 300 }}
+				animate={{ y: 0 }}
+			>
 				{characterList && !showStageSelect ? (
 					characterList.map((character) => {
 						return (
@@ -103,7 +119,7 @@ export default function CharacterSelectPage() {
 						playerTwoSelected={playerTwoSelected}
 					/>
 				)}
-			</section>
+			</motion.section>
 		</section>
 	);
 }

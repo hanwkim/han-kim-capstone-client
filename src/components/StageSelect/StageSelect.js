@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./StageSelect.scss";
 
@@ -33,7 +34,7 @@ export default function StageSelect({ playerOneSelected, playerTwoSelected }) {
 	}
 
 	return (
-		<section className="stage-select">
+		<motion.section className="stage-select" initial={{ y: 300 }} animate={{ y: 0 }}>
 			<button
 				onClick={() => {
 					navigator.geolocation.getCurrentPosition(
@@ -60,6 +61,6 @@ export default function StageSelect({ playerOneSelected, playerTwoSelected }) {
 					Submit
 				</button>
 			</form>
-		</section>
+		</motion.section>
 	);
 }
