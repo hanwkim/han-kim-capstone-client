@@ -1,5 +1,6 @@
 @use "../../styles/partials/font";
 @use "../../styles/partials/animation";
+@use "../../styles/partials/mixin" as *;
 
 .stage-select {
     display: flex;
@@ -15,6 +16,10 @@
         border-radius: 0.2rem;
         border: 0.3rem solid transparent;
 
+        @include tablet {
+            font-size: 2.6rem;
+        }
+
         &:hover {
             animation: buttonHover 1s linear infinite; 
         }
@@ -22,6 +27,10 @@
 
     &__seperator {
         font-size: 2.2rem;
+
+        @include tablet {
+            font-size: 2.8rem;
+        }
     }
 
     &__form {
@@ -32,12 +41,20 @@
 
     &__form-label {
         font-size: 2rem;
+
+        @include tablet {
+            font-size: 2.4rem;
+        }
     }
 
     &__input {
         margin: 1rem 0;
         width: 100%;
         font-family: 'PixeloidSans';
+
+        @include tablet {
+            height: 2.8rem;
+        }
     }
 
     &__form-button {
@@ -47,6 +64,10 @@
         font-size: 1.9rem;
         padding: 0.2rem 2rem;
         border: 0.2rem solid transparent;
+
+        @include tablet {
+            font-size: 2.4rem;
+        }
 
         &:hover {
             animation: buttonHover 1s linear infinite; 

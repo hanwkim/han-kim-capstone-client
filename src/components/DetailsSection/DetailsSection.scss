@@ -1,5 +1,6 @@
 @use "../../styles/partials/mixin";
 @use "../../styles/partials/animation";
+@use "../../styles/partials/mixin" as *;
 
 .details-overlay {
     background-color: rgba(0, 0, 0, 0.7);
@@ -7,6 +8,10 @@
     height: 100vh;
     position: fixed;
     z-index: 5;
+
+    @include tablet {
+        display: none;
+    }
 }
 
 
@@ -22,8 +27,15 @@
     top: 50%;
     transform: translate(-50%, -50%);
 
-    &__div {
-        position: absolute;
+    @include tablet {
+        width: 45%;
+        height: 65.5%;
+        left: 51%;
+        top: 25rem;
+        overflow: auto;
+        border-width: 0.3rem;
+        max-width: 42rem;
+        transform: none;
     }
 
     &__title {

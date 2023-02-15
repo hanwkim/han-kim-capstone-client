@@ -1,3 +1,5 @@
+@use "../../styles/partials/mixin" as *;
+
 .loading {
     position: absolute;
     width: 100%;
@@ -11,5 +13,9 @@
     &__text {
         color: white;
         font-size: 2rem;
+
+        @include tablet {
+            font-size: 3rem;
+        }
     }
 }

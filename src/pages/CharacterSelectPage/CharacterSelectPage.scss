@@ -1,5 +1,6 @@
 @use "../../styles/partials/mixin";
 @use "../../styles/partials/animation";
+@use "../../styles/partials/mixin" as *;
 
 .character-select {
     display: flex;
@@ -11,13 +12,18 @@
         text-shadow: 0 0.3rem #FEE440;
         margin: 3rem 0 4rem 0;
         animation: selectTitleAnimation linear 2s infinite;
+
+        @include tablet {
+            font-size: 3.8rem;
+            margin: 4rem 0 5rem 0;
+        }
     }
     
     &__container {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        max-width: 66rem;
+        max-width: 68rem;
         padding: 0 2rem;
         margin-bottom: 5rem;
     }
@@ -38,6 +44,12 @@
         align-items: center;
         width: 33vw;
         height: 33vw;
+
+        @include tablet {
+            max-width: 25rem;
+            max-height: 25rem;
+            border-width: 0.3rem;
+        }
     }
 
     &__p1-image {
@@ -52,6 +64,10 @@
     &__p2-placeholder {
         font-size: 2.5rem;
         font-weight: 700;
+
+        @include tablet {
+            font-size: 3rem;
+        }
     }
 
     &__p1-placeholder {
@@ -66,13 +82,18 @@
         font-size: 1.6rem;
         height: 1.6rem;
         margin: 1rem 0 2rem 0;
+
+        @include tablet {
+            font-size: 2.4rem;
+            margin: 2rem 0 3rem 0;
+        }
     }
 
     &__character-grid {
         display: flex;
         flex-wrap: wrap;
         width: 80%;
-        max-width: 71vw;
+        max-width: 55rem;
         justify-content: center;
     }
 }

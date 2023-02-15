@@ -1,5 +1,6 @@
 @use "../../styles/partials/font";
 @use "../../styles/partials/animation";
+@use "../../styles/partials/mixin" as *;
 
 .main {
     text-align: center;
@@ -10,6 +11,11 @@
         color: #FF865E;
         text-shadow: 0 0.7rem rgba(0, 0, 0, 0.91);
         animation: titleAnimation linear 1s infinite;
+
+        @include tablet {
+            font-size: 9.5rem;
+            margin: 7rem 0;
+        }
     }
 
     &__links {
@@ -24,6 +30,10 @@
         margin-bottom: 1rem;
         font-weight: 700;
         cursor: pointer;
+
+        @include tablet {
+            font-size: 4.2rem;
+        }
         
         &--blink {
             animation: newGameBlink steps(1, end) 0.75s infinite;
@@ -44,6 +54,10 @@
         color: black;
         display: inline-block;
         cursor: pointer;
+
+        @include tablet {
+            font-size: 2.8rem;
+        }
 
         &--selected {
             animation: gameTypeSelected steps(1, end) 0.1s infinite;

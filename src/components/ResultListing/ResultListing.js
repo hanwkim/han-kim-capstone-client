@@ -4,7 +4,13 @@ import "./ResultListing.scss";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 
-export default function ResultListing({ name, address, rating, id, location }) {
+export default function ResultListing({
+	name,
+	address,
+	rating,
+	id,
+	location,
+}) {
 	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
 	const API_KEY = process.env.REACT_APP_API_KEY;
 	const BASE_MAP_API_URL = "https://www.google.com/maps/embed/v1/place";
@@ -53,7 +59,10 @@ export default function ResultListing({ name, address, rating, id, location }) {
 					/>,
 					document.getElementById("portal")
 				)}
-			<section className="listing" onClick={clickHandler}>
+			<section
+				className="listing"
+				onClick={() => clickHandler()}
+			>
 				<span className="listing__name">{name}</span>
 				<span className="listing__address">{shortenedAddress}</span>
 				<span className="listing__rating">

@@ -1,7 +1,13 @@
 @use '../../styles/partials/animation';
+@use '../../styles/partials/mixin' as *;
 
 .results {
     padding: 0 2rem;
+
+    @include tablet {
+        max-width: 92rem;
+        margin: 0 auto;
+    }
 
     &__header {
         display: flex;
@@ -11,13 +17,19 @@
     &__winner {
         min-height: 12rem;
         min-width: 12rem;
-        width: 25vw;
-        height: 25vw;
+        width: 24vw;
+        height: 24vw;
         border: 0.2rem solid black;
         border-radius: 0.2rem;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @include tablet {
+            max-width: 18rem;
+            max-height: 18rem;
+            border-width: 0.3rem;
+        }
     }
 
     &__image {
@@ -38,6 +50,10 @@
         font-size: 2.8rem;
         text-shadow: 0 0.4rem #FEF9EF;
         animation: resultsTitleAnimation linear 1s infinite;
+
+        @include tablet {
+            font-size: 3.4rem;
+        }
     }
 
     &__header-subtitle {
@@ -46,11 +62,20 @@
         text-shadow: 0 0.2rem #FEF9EF;
         animation: resultsTitleAnimation linear 1s infinite;
         text-align: center;
+
+        @include tablet {
+            font-size: 3rem;
+        }
     }
 
     &__listings-container {
         border: 0.2rem solid black;
         border-radius: 0.2rem;
+
+        @include tablet {
+            width: 48%;
+            border-width: 0.3rem;
+        }
     }
 
     &__listings-title {
@@ -63,11 +88,16 @@
         border-radius: 0.2rem;
         max-height: 50vh;
         overflow: auto;
+
+        @include tablet {
+            border-width: 0.3rem;
+        }
     }
 
     &__filter-container {
         margin: 2rem 0;
         display: flex;
+        align-items: center;
         padding: 0 1rem;
     }
 
@@ -76,6 +106,10 @@
     &__filter-button {
         flex-grow: 1;
         font-size: 1.3rem;
+
+        @include tablet {
+            font-size: 1.5rem;
+        }
     }
 
     &__dollar {

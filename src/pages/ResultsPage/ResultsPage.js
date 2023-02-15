@@ -15,8 +15,10 @@ export default function ResultsPage() {
 	const [winner, setWinner] = useState(null);
 	const [priceFilter, setPriceFilter] = useState(0);
 	const [isOpenNow, setIsOpenNow] = useState(false);
-	const [searchParams] = useSearchParams();
 	const [isLoading, setIsLoading] = useState(true);
+
+	const [searchParams] = useSearchParams();
+	
 	const navigate = useNavigate();
 
 	useEffect(() => {
