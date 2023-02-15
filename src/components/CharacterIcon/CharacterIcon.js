@@ -1,5 +1,8 @@
 import { useState } from "react";
+import useSound from "use-sound";
 import "./CharacterIcon.scss";
+import hoverSfx from "../../assets/sounds/hover.wav";
+import selectSfx from "../../assets/sounds/characterSelect.mp3";
 
 export default function CharacterIcon({
 	imageUrl,
@@ -18,10 +21,15 @@ export default function CharacterIcon({
 	const [playerOneModal, setPlayerOneModal] = useState(false);
 	const [playerTwoModal, setPlayerTwoModal] = useState(false);
 
+	const [playHover] = useSound(hoverSfx);
+	const [playSelect] = useSound(selectSfx);
+
 	function playerHover(isP1Selected) {
 		const { image, name } = characterList.find(
 			(character) => character.id === id
 		);
+
+		playHover();
 
 		if (!isP1Selected) {
 			setPlayerOneHover([image, name]);
@@ -34,6 +42,9 @@ export default function CharacterIcon({
 
 	function playerClick() {
 		const { name } = characterList.find((character) => character.id === id);
+
+		playSelect();
+
 		if (!playerOneSelected) {
 			setPlayerOneSelected(name);
 			setPlayerOneModal(true);
@@ -76,7 +87,7 @@ export default function CharacterIcon({
 							setPlayerTwoBorder(false);
 						}
 					}}
-					onClick={playerClick}
+					onClick={!playerTwoSelected ? playerClick : null}
 				>
 					<img
 						src={imageUrl}

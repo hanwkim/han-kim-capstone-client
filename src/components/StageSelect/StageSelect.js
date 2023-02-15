@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import useSound from "use-sound";
 import "./StageSelect.scss";
+import selectSfx from "../../assets/sounds/characterSelect.mp3";
 
 export default function StageSelect({ playerOneSelected, playerTwoSelected }) {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
+
+	const [playSelect] = useSound(selectSfx);
 
 	const params = {
 		type: searchParams.get("type"),
@@ -15,7 +19,11 @@ export default function StageSelect({ playerOneSelected, playerTwoSelected }) {
 	const requestParams = new URLSearchParams(params).toString();
 
 	function currentLocationSuccess(position) {
-		navigate(`/versus?${requestParams}&city=current`);
+		playSelect();
+
+		setTimeout(() => {
+			navigate(`/versus?${requestParams}&city=current`)
+		}, 500);
 	}
 
 	function currentLocationError(error) {
@@ -30,7 +38,11 @@ export default function StageSelect({ playerOneSelected, playerTwoSelected }) {
 			return;
 		}
 
-		navigate(`/versus?${requestParams}&city=${event.target.city.value}`);
+		playSelect();
+
+		setTimeout(() => {
+			navigate(`/versus?${requestParams}&city=${event.target.city.value}`);
+		}, 500);
 	}
 
 	return (

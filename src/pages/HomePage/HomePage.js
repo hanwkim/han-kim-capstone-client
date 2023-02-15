@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useSound from "use-sound";
 import HotDogIcon from "../../assets/images/hotdog.png";
 import CakeIcon from "../../assets/images/strawberrycake.png";
 import "./HomePage.scss";
+import hoverSfx from "../../assets/sounds/hover.wav";
+import selectSfx from "../../assets/sounds/titleSelect.mp3";
 
 export default function HomePage() {
 	const [newGameClicked, setNewGameClicked] = useState(false);
@@ -14,6 +17,7 @@ export default function HomePage() {
 
 	function savorySelected() {
 		setSavoryClick(true);
+		playSelect();
 
 		setTimeout(() => {
 			navigate("/select?type=savory");
@@ -22,11 +26,15 @@ export default function HomePage() {
 
 	function sweetSelected() {
 		setSweetClick(true);
+		playSelect();
 
 		setTimeout(() => {
 			navigate("/select?type=sweet");
 		}, 1000);
 	}
+
+	const [playHover] = useSound(hoverSfx);
+	const [playSelect] = useSound(selectSfx);
 
 	return (
 		<main className="main">
@@ -62,7 +70,13 @@ export default function HomePage() {
 										? "main__link-savory main__link-savory--selected"
 										: "main__link-savory"
 								}
-								onMouseEnter={() => setSavoryHover(true)}
+								onMouseEnter={() => {
+									if (sweetClick || savoryClick) {
+										return;
+									}
+									setSavoryHover(true);
+									playHover();
+								}}
 								onMouseLeave={() => setSavoryHover(false)}
 								onClick={savorySelected}
 							>
@@ -85,7 +99,14 @@ export default function HomePage() {
 										? "main__link-sweet main__link-sweet--selected"
 										: "main__link-sweet"
 								}
-								onMouseEnter={() => setSweetHover(true)}
+								onMouseEnter={() => {
+									if (sweetClick || savoryClick) {
+										return;
+									}
+
+									setSweetHover(true);
+									playHover();
+								}}
 								onMouseLeave={() => setSweetHover(false)}
 								onClick={sweetSelected}
 							>

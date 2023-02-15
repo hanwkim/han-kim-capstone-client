@@ -6,6 +6,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import "./ResultsPage.scss";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
+import useSound from "use-sound";
+import selectSfx from "../../assets/sounds/characterSelect.mp3";
 
 export default function ResultsPage() {
 	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -123,6 +125,8 @@ export default function ResultsPage() {
 			}
 		}
 	}
+
+	const [playSelect] = useSound(selectSfx);
 
 	return (
 		<>
@@ -250,7 +254,9 @@ export default function ResultsPage() {
 					transition={{ delay: 2 }}
 				>
 					<button
-						onClick={() => navigate("/")}
+						onClick={() => {
+							playSelect()
+							navigate("/")}}
 						className="results__reset-button"
 					>
 						Another Showdown?

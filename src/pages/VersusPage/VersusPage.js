@@ -2,7 +2,9 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import useSound from "use-sound";
 import "./VersusPage.scss";
+import selectSfx from "../../assets/sounds/titleSelect.mp3";
 
 export default function VersusPage() {
 	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -34,8 +36,12 @@ export default function VersusPage() {
 		}
 	}, [params]);
 
+	const [playSelect] = useSound(selectSfx);
+
 	function clickHandler() {
 		const winningPlayer = Math.floor(Math.random() * 2);
+
+		playSelect();
 
 		if (winningPlayer === 0) {
 			navigate(
