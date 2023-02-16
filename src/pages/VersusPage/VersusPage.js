@@ -7,7 +7,7 @@ import "./VersusPage.scss";
 import selectSfx from "../../assets/sounds/titleSelect.mp3";
 
 export default function VersusPage() {
-	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
+	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5050";
 	const [playerOne, setPlayerOne] = useState(null);
 	const [playerTwo, setPlayerTwo] = useState(null);
 	const [searchParams] = useSearchParams();

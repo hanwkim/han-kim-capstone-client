@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export default function CharacterSelectPage() {
-	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
+	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5050";
 	const [characterList, setCharacterList] = useState(null);
 	const [playerOneHover, setPlayerOneHover] = useState(null);
 	const [playerTwoHover, setPlayerTwoHover] = useState(null);

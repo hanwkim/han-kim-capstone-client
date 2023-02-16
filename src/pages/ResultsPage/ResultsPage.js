@@ -10,7 +10,7 @@ import useSound from "use-sound";
 import selectSfx from "../../assets/sounds/characterSelect.mp3";
 
 export default function ResultsPage() {
-	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
+	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5050";
 	const [listings, setListings] = useState(null);
 	const [winner, setWinner] = useState(null);
 	const [priceFilter, setPriceFilter] = useState(0);

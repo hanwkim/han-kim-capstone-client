@@ -11,7 +11,7 @@ export default function ResultListing({
 	id,
 	location,
 }) {
-	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL;
+	const BASE_API_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5050";
 	const API_KEY = process.env.REACT_APP_API_KEY;
 	const BASE_MAP_API_URL = "https://www.google.com/maps/embed/v1/place";
 

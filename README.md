@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Food Fight
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Food Fight is an app that gamifies the process of deciding where and what to eat. It's presented with a 16-bit game aesthetic to make it more fun and interactive. This is the client side portion of the app, remember to check out the server side as well!
 
-## Available Scripts
+[Server side repo](https://github.com/hanwkim/han-kim-capstone-server)
 
-In the project directory, you can run:
+## What Does This App Do?
 
-### `npm start`
+If you're like me, you grew up playing 8-bit/16-bit videogames. Food Fight takes inspiration from old school fighting games, and pits two food-related combatants against each other, picks a winner, and gives a whole bunch of restaurant listings based on the winning food item and location of your choosing. There are options to filter based on max price, and whether the restaurant is currently open. And clicking on a restaurant listing will give further details, like hours, reviews, and location (with a handy interactive map!).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+First, clone the repo:
 
-### `npm test`
+```bash
+$ git clone git@github.com:hanwkim/han-kim-capstone-client.git
+```
+Then to install the necessary dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+$ cd han-kim-capstone-client
+$ npm install
+```
+```$ npm install``` above should take care of installing what is needed, but just in case something goes wrong, the other dependencies that are being used can be installed with this command:
 
-### `npm run build`
+```bash
+$ npm i sass react-router-dom axios framer-motion use-sound
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Environment Variables
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A .env file will need to be created within the main repo folder, and it will need the following variables:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+REACT_APP_BACKEND_URL=<ENTER BACKEND URL>
+REACT_APP_API_KEY=<ENTER GOOGLE MAPS API KEY>
+```
+The backend URL should be formatted as such: ```http://localhost:<ENTER PORT FROM SERVER SIDE>```. Note that if on the server side you did not provide a PORT environment variable, then no need to provide a REACT_APP_BACKEND_URL variable, as it will default to ```http://localhost:5050```, same default port as on the server.
 
-### `npm run eject`
+If you already created an API key for the server side, then you can enter it here for REACT_APP_API_KEY. Otherwise, follow the instructions below:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+A Google Maps API key is mandatory. The link below gives detailed instructions on how to set up a Google Cloud project, which will allow you to generate an API key. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[Google Maps API: Get Started](https://developers.google.com/maps/get-started)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You will need to create a billing account, but if it's your first then Google offers a credit of $300, which is roughly equivalent to over 30,000 GET requests from the API.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Once you have an API key, enter it into the .env file.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Starting the App
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Enter this command, and you should be greeted with the homepage!
 
-### Code Splitting
+```
+$ npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Note: make sure the server side is running as well!
 
-### Analyzing the Bundle Size
+## Screenshots and Usage Instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="https://i.ibb.co/BT5pSdD/screenshot1.png" alt="title page" height="200">
 
-### Making a Progressive Web App
+Title screen - hit "New Game", and select Savory or Sweet depending on your mood. You will be shown a different roster of characters depending on your selection.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img src="https://i.ibb.co/BT5pSdD/screenshot2.png" alt="title page" height="200">
 
-### Advanced Configuration
+Select your characters. Which two food items are you deciding between?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<img src="https://i.ibb.co/BT5pSdD/screenshot3.png" alt="title page" height="200">
 
-### Deployment
+Stage select. This will determine the location/proximity of the restaurant listings that you will get. Using current location is easiest, but you can enter another city name as well.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<img src="https://i.ibb.co/BT5pSdD/screenshot4.png" alt="title page" height="200">
 
-### `npm run build` fails to minify
+Now that the match is set, time to fight!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="https://i.ibb.co/BT5pSdD/screenshot5.png" alt="title page" height="200">
+
+We have a winner! The results will show the restaurants where you can buy the winner. Filtering options below for max price, and whether the restaurants are currently open.
+
+<img src="https://i.ibb.co/BT5pSdD/screenshot6.png" alt="title page" height="200">
+
+Click on a listing and you'll be given more details - description, price level, hours, reviews, and interactive map.
+
+Want another showdown? Press that button at the bottom of the results page.
+
+## Tech Stacks/Libraries Used
+
+ - [React](https://reactjs.org/)
+ - [Sass](https://sass-lang.com/)
+ - [Framer Motion](https://www.framer.com/motion/)
+ - [Use-Sound](https://github.com/joshwcomeau/use-sound)
+ - [Axios](https://axios-http.com/)
+
+## Lessons Learned and Roadmap
+
+Visuals matter, and trying to achieve a 16-bit game aesthetic requires a fair amount of state management to handle all of the various hover and click animations. Figuring out which component needed to handle which state variable was a challenge, but a very rewarding one. There is an opportunity here to utilize other libraries to manage state more cleanly as well.
+
+Future plans include:
+ - account creation, login, and sign-up, with the ability for restaurant listings to be saved to individual accounts
+ - online multiplayer
+ - a larger roster of characters
+
+## Thank You
+
+Thank you for taking the time to check out my project. Feel free to reach out to me with any questions or comments!
