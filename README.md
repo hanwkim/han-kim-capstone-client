@@ -64,23 +64,23 @@ Note: make sure the server side is running as well!
 
 Title screen - hit "New Game", and select Savory or Sweet depending on your mood. You will be shown a different roster of characters depending on your selection.
 
-<img src="https://i.ibb.co/BT5pSdD/screenshot2.png" alt="title page" height="200">
+<img src="https://i.ibb.co/0BHzZPW/screenshot2.png" alt="character select" height="200">
 
 Select your characters. Which two food items are you deciding between?
 
-<img src="https://i.ibb.co/BT5pSdD/screenshot3.png" alt="title page" height="200">
+<img src="https://i.ibb.co/0yGxKv8/screenshot3.png" alt="stage select" height="200">
 
 Stage select. This will determine the location/proximity of the restaurant listings that you will get. Using current location is easiest, but you can enter another city name as well.
 
-<img src="https://i.ibb.co/BT5pSdD/screenshot4.png" alt="title page" height="200">
+<img src="https://i.ibb.co/87Y1cBs/screenshot4.png" alt="showdown page" height="200">
 
 Now that the match is set, time to fight!
 
-<img src="https://i.ibb.co/BT5pSdD/screenshot5.png" alt="title page" height="200">
+<img src="https://i.ibb.co/LNjwnh6/screenshot5.png" alt="results page" height="200">
 
 We have a winner! The results will show the restaurants where you can buy the winner. Filtering options below for max price, and whether the restaurants are currently open.
 
-<img src="https://i.ibb.co/BT5pSdD/screenshot6.png" alt="title page" height="200">
+<img src="https://i.ibb.co/2W8MNqk/screenshot6.png" alt="place details" height="200">
 
 Click on a listing and you'll be given more details - description, price level, hours, reviews, and interactive map.
 
