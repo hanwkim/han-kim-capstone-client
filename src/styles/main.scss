@@ -1,9 +1,12 @@
 @use './partials/resets';
 @use './partials/font';
+@use './partials/animation';
 
 body {
     font-family: 'PixeloidSans';
-    background-color: #A2D2FF;
+    background: linear-gradient(#A2D2FF, #FEF9EF, #fee540d3, #ff865ec5, #fee540d3, #FEF9EF, #A2D2FF);
+    animation: backgroundAnimation linear 20s infinite;
+    background-size: 300% 300%;
 }
 
 a {

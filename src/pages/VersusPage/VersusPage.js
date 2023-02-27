@@ -74,11 +74,13 @@ export default function VersusPage() {
 				<div className="versus__card-container">
 					<div className="versus__card" initial={{ x: -300 }} animate={{ x: 0 }}>
 						{playerOne && (
-							<img
+							<motion.img
 								src={playerOne.image}
 								className="versus__p1-image"
 								alt="Player One Character"
-							></img>
+								animate={{ y: [0, 3, 0, -3, 0] }}
+								transition={{ repeat: Infinity, ease: "linear", duration: 2 }}
+							></motion.img>
 						)}
 					</div>
 					<span className="versus__name" inital={{ x: -300 }} animate={{ x: 0 }}>
@@ -89,11 +91,13 @@ export default function VersusPage() {
 				<div className="versus__card-container">
 					<div className="versus__card">
 						{playerTwo && (
-							<img
+							<motion.img
 								src={playerTwo.image}
 								className="versus__p2-image"
 								alt="Player Two Character"
-							></img>
+								animate={{ y: [0, 3, 0, -3, 0] }}
+								transition={{ repeat: Infinity, ease: "linear", duration: 2 }}
+							></motion.img>
 						)}
 					</div>
 					<span className="versus__name">

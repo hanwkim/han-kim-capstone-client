@@ -48,15 +48,18 @@ export default function CharacterSelectPage() {
 				<div className="character-select__player-container">
 					<motion.div
 						className="character-select__player"
-						initial={{ x: -300 }}
+						initial={{ x: -1000 }}
 						animate={{ x: 0 }}
+						transition={{ type: "spring", delay: 0.25, bounce: 0.2 }}
 					>
 						{playerOneHover ? (
-							<img
+							<motion.img
 								src={playerOneHover[0]}
 								className="character-select__p1-image"
 								alt="Player One Character"
-							></img>
+								animate={{ y: [0, 3, 0, -3, 0] }}
+								transition={{ repeat: Infinity, ease: "linear", duration: 2 }}
+							></motion.img>
 						) : (
 							<span className="character-select__p1-placeholder">
 								1P
@@ -70,15 +73,18 @@ export default function CharacterSelectPage() {
 				<div className="character-select__player-container">
 					<motion.div
 						className="character-select__player"
-						initial={{ x: 300 }}
+						initial={{ x: 1000 }}
 						animate={{ x: 0 }}
+						transition={{ type: "spring", delay: 0.25, bounce: 0.2 }}
 					>
 						{playerTwoHover ? (
-							<img
+							<motion.img
 								src={playerTwoHover[0]}
 								className="character-select__p2-image"
 								alt="Player Two Character"
-							></img>
+								animate={{ y: [0, 3, 0, -3, 0] }}
+								transition={{ repeat: Infinity, ease: "linear", duration: 2 }}
+							></motion.img>
 						) : (
 							<span className="character-select__p2-placeholder">
 								2P
@@ -92,8 +98,9 @@ export default function CharacterSelectPage() {
 			</section>
 			<motion.section
 				className="character-select__character-grid"
-				initial={{ y: 300 }}
+				initial={{ y: 1000 }}
 				animate={{ y: 0 }}
+				transition={{ type: "spring", delay: 0.75, bounce: 0.35 }}
 			>
 				{characterList && !showStageSelect ? (
 					characterList.map((character) => {

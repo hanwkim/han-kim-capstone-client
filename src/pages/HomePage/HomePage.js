@@ -6,6 +6,7 @@ import CakeIcon from "../../assets/images/strawberrycake.png";
 import "./HomePage.scss";
 import hoverSfx from "../../assets/sounds/hover.wav";
 import selectSfx from "../../assets/sounds/titleSelect.mp3";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
 	const [newGameClicked, setNewGameClicked] = useState(false);
@@ -39,23 +40,33 @@ export default function HomePage() {
 	return (
 		<main className="main">
 			<div className="main__title-container">
-				<h1 className="main__title">Food Fight</h1>
+				<motion.h1
+					className="main__title"
+					initial={{ y: -300 }}
+					animate={{ y: 0 }}
+					transition={{ duration: 1 }}
+				>
+					Food Fight
+				</motion.h1>
 			</div>
 			<section className="main__links">
-				<span
+				<motion.span
 					onClick={() => setNewGameClicked(!newGameClicked)}
 					className={
 						newGameClicked
 							? "main__link-new"
 							: "main__link-new main__link-new--blink"
 					}
+					initial={{ display: "none" }}
+					animate={{ display: "initial" }}
+					transition={{ delay: 1.5 }}
 				>
 					New Game
-				</span>
+				</motion.span>
 				{newGameClicked && (
 					<>
 						<div className="main__link-container">
-							<img
+							<motion.img
 								src={HotDogIcon}
 								className={
 									savoryHover
@@ -63,7 +74,13 @@ export default function HomePage() {
 										: "main__link-icon"
 								}
 								alt="Savory Food Icon"
-							></img>
+								animate={{ scale: [1, 0.75, 1] }}
+								transition={{
+									repeat: Infinity,
+									ease: "linear",
+									duration: 1,
+								}}
+							></motion.img>
 							<span
 								className={
 									savoryClick
@@ -84,7 +101,7 @@ export default function HomePage() {
 							</span>
 						</div>
 						<div className="main__link-container">
-							<img
+							<motion.img
 								src={CakeIcon}
 								className={
 									sweetHover
@@ -92,7 +109,13 @@ export default function HomePage() {
 										: "main__link-icon"
 								}
 								alt="Sweet Food Icon"
-							></img>
+								animate={{ scale: [1, 0.75, 1] }}
+								transition={{
+									repeat: Infinity,
+									ease: "linear",
+									duration: 1,
+								}}
+							></motion.img>
 							<span
 								className={
 									sweetClick

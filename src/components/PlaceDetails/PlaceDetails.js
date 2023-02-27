@@ -1,5 +1,6 @@
 import "./PlaceDetails.scss";
 import Review from "../Review/Review";
+import { v4 as uuid } from "uuid";
 
 export default function PlaceDetails({ name, hours, summary, reviews, price }) {
 	return (
@@ -23,17 +24,20 @@ export default function PlaceDetails({ name, hours, summary, reviews, price }) {
 				{typeof hours !== "string"
 					? hours.map((hour) => {
 							return (
-								<li className="details__hour-item">{hour}</li>
+								<li key={uuid()} className="details__hour-item">
+									{hour}
+								</li>
 							);
 					  })
 					: hours}
 			</ul>
 			<span className="details__reviews-title">Reviews:</span>
-			<section className="details__reviews-container">	
+			<section className="details__reviews-container">
 				{typeof reviews !== "string"
-					? reviews.map((review) => {
+					? reviews.map((review, i) => {
 							return (
 								<Review
+									key={uuid()}
 									name={review.author_name}
 									rating={review.rating}
 									text={review.text}

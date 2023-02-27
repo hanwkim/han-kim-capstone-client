@@ -146,11 +146,13 @@ export default function ResultsPage() {
 				>
 					<div className="results__winner">
 						{winner && (
-							<img
+							<motion.img
 								className="results__image"
 								src={winner.image}
 								alt="Winning Food"
-							></img>
+								animate={{ y: [0, 3, 0, -3, 0] }}
+								transition={{ repeat: Infinity, ease: "linear", duration: 2 }}
+							></motion.img>
 						)}
 					</div>
 					<div className="results__header-text">

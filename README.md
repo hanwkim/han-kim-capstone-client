@@ -103,6 +103,17 @@ Future plans include:
  - online multiplayer
  - a larger roster of characters
 
+## Credits
+
+Food Sprites:
+
+ - [https://ghostpixxells.itch.io/pixelfood](https://ghostpixxells.itch.io/pixelfood)
+ - [https://henrysoftware.itch.io/pixel-food](https://henrysoftware.itch.io/pixel-food)
+
+Sound Effects:
+
+ - [https://pixabay.com/](https://pixabay.com/) - jhyland and gamer127
+
 ## Thank You
 
 Thank you for taking the time to check out my project. Feel free to reach out to me with any questions or comments!

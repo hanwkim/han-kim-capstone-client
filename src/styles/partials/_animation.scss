@@ -1,3 +1,13 @@
+@keyframes backgroundAnimation {
+    0% {
+        background-position-y: 0%;
+    }
+
+    100% {
+        background-position-y: -300%;
+    }
+}
+
 @keyframes titleAnimation {
     0% {
         color: #FF865E;
@@ -270,5 +280,19 @@
 
     75% {
         text-shadow: 0 0.2rem #FF597B;
+    }
+}
+
+@keyframes resultsHover {
+    0% {
+        box-shadow: inset 0 0 0.6rem transparent;
+    }
+
+    50% {
+        box-shadow: inset 0 0 0.6rem #FEE440;
+    }
+
+    100% {
+        box-shadow: inset 0 0 0.6rem transparent;
     }
 }
